@@ -1,0 +1,8 @@
+
+
+<h2>Inventario</h2>
+
+<a routerLink = "../nuevo">+</a>
+<div>
+  <app-table (productClicked) = "getProductId($event)" [products] = "products" ></app-table>
+</div>
