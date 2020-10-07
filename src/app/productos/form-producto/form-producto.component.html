@@ -1,0 +1,64 @@
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit($event)">
+    <mat-card class="shipping-card">
+        <mat-card-header>
+            <mat-card-title>Crear Nuevo Producto</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Nombre" formControlName="nombre">
+                        <mat-error *ngIf="addressForm.controls['nombre'].hasError('required')">
+                            nombre es <strong>requirido</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="full-width">
+                      <mat-select placeholder="tipo producto" formControlName="tipo_producto">
+                        <mat-option *ngFor="let tipos of tipo_productos" [value]="tipos.id_tipo_producto">
+                          {{ tipos.nombre }}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="addressForm.controls['tipo_producto'].hasError('required')">
+                        tipo es <strong>required</strong>
+                      </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Valor" formControlName="valor">
+                        <mat-error *ngIf="addressForm.controls['valor'].hasError('required')">
+                            valor es <strong>requirido</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="full-width">
+                      <mat-select placeholder="proveedor" formControlName="proveedor">
+                        <mat-option *ngFor="let proveedor of proveedores" [value]="proveedor.id_proveedor">
+                          {{ proveedor.nombre }}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="addressForm.controls['proveedor'].hasError('required')">
+                        proveedor es <strong>required</strong>
+                      </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <textarea matInput placeholder="Descripcion" formControlName="descripcion"></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit">Submit</button>
+        </mat-card-actions>
+    </mat-card>
+</form>
+

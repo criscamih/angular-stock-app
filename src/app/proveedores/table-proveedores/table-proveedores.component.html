@@ -1,0 +1,22 @@
+<table>
+    <tr>
+        <th>Item</th>
+        <th>Nombre</th>
+        <th>Nit</th>
+        <th>Telefono</th>
+        <th>Correo</th>
+        <th></th>
+        <th></th>
+    </tr>
+    
+        <tr *ngFor = "let proveedor of proveedores">
+            <td>{{proveedor.id_proveedor}}</td>
+            <td>{{proveedor.nombre}}</td>
+            <td>{{proveedor.nit}}</td>
+            <td>{{proveedor.telefono}}</td>
+            <td>{{proveedor.correo}}</td>
+            <td><a [routerLink]="['../proveedores/editar',proveedor.id_proveedor]">Editar</a></td>  
+            <td><a [routerLink]="['../proveedores/eliminar',proveedor.id_proveedor]">Eliminar</a></td>   
+        </tr>
+      
+</table>

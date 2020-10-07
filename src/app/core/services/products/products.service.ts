@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import {HttpClient } from '@angular/common/http';
 import {environment} from '../../../../environments/environment';
 
-import { Product } from '../../../modelos/product.model';
+import { DetalleInventarioModel} from '../../../modelos/detalle_inventario.model';
 import { AreaModel } from 'src/app/modelos/area.model';
 import { EmpleadoModel } from 'src/app/modelos/empleado.model';
 import { EstadoModel } from 'src/app/modelos/estado.model';
-import { ProductoModel } from 'src/app/modelos/producto.modelo';
-import { StockModel } from '../../../modelos/stock.model';
+import { ProductoModel } from 'src/app/modelos/producto.model';
+import { InventarioModel } from '../../../modelos/inventario.model';
+import { TipoProductoModel } from '../../../modelos/tipo_producto.model';
+import { ProveedorModel } from '../../../modelos/proveedor.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,18 +20,12 @@ export class ProductsService {
     private http: HttpClient
   ) { }
 
-  getAllProductsStock() {
-    return this.http.get<Product[]>(environment.url_stock);
-  }
-
-  getProductById(id: number) {
-    return this.http.get<Product>(`${environment.url_stock}${id}`);
-  }
-
+  
+  
   getAllAreas(){
     return this.http.get<AreaModel[]>(environment.url_areas);
   }
-
+  
   getAllEmpleados(){
     return this.http.get<EmpleadoModel[]>(environment.url_empleados);
   }
@@ -37,31 +33,73 @@ export class ProductsService {
   getAllEstados(){
     return this.http.get<EstadoModel[]>(environment.url_estados);
   }
-
+  
+  getAllTipoProducto(){
+    return this.http.get<TipoProductoModel[]>(environment.url_tipo_producto);
+  }
+  //-----------------------
+  //---crud proveedores----
+  //-----------------------
+  getAllProveedores(){
+    return this.http.get<ProveedorModel[]>(environment.url_proveedor);
+  }
+  getProveedorById(id: number){
+    return this.http.get<ProveedorModel>(`${environment.url_proveedor}${id}`);
+  }
+  createProveedor(producto: ProveedorModel) {
+    return this.http.post(`${environment.url_proveedor}`, producto);
+  }
+  deleteProveedor(id: number){
+    return this.http.delete(`${environment.url_proveedor}${id}`);
+  }
+  updateProveedor(id:number, changes: ProveedorModel) {
+    return this.http.put<ProductoModel>(`${environment.url_proveedor}${id}`, changes);
+  }
+  
+  //-----------------------
+  //---crud productos------
+  //-----------------------
   getAllProductos(){
     return this.http.get<ProductoModel[]>(environment.url_productos);
   }
-
-  createProductStock(productoStock: StockModel) {
-    return this.http.post(`${environment.url_stock}`, productoStock);
+  getProductoById(id: number){
+    return this.http.get<ProductoModel>(`${environment.url_productos}${id}`);
   }
-
-  deleteProductStock(id: number){
-    return this.http.delete(`${environment.url_stock}${id}`);
+  createProducto(producto: ProductoModel) {
+    return this.http.post(`${environment.url_productos}`, producto);
   }
-
-  updateProductStock(changes: Partial<StockModel>) {
-    return this.http.put(`${environment.url_stock}`, changes);
+  deleteProducto(id: number){
+    return this.http.delete(`${environment.url_productos}${id}`);
   }
-
+  updateProducto(id:number,changes:ProductoModel) {
+    return this.http.put(`${environment.url_productos}${id}`, changes);
+  }
+  
+  //-----------------------
+  //---crud inventario-----
+  //-----------------------
+  createInventario(inventario: InventarioModel) {
+    return this.http.post(`${environment.url_inventario}`, inventario);
+  }
+  
+  deleteInventario(id: number){
+    return this.http.delete(`${environment.url_inventario}${id}`);
+  }
+  
+  updateInventario(id:number,changes: InventarioModel) {
+    return this.http.put(`${environment.url_inventario}${id}`, changes);
+  }
+  
   getInventarioById(id: number){
-    return this.http.get<StockModel>(`${environment.url_inventario}${id}`);
+    return this.http.get<InventarioModel>(`${environment.url_inventario}${id}`);
   }
 
-  // getAllProducts(): Product[]{
-  //   return this.products;
-  // }
-  // getProductById(id: string): Product {
-  //   return this.products.find(item => id === item.id);
-  // }
+  getAllInventarios() {
+    return this.http.get<InventarioModel[]>(environment.url_inventario);
+  }
+
+  getDetalleInventario(id: number) {
+    return this.http.get<DetalleInventarioModel>(`${environment.url_detalle_inventario}${id}`);
+  }
+
 }

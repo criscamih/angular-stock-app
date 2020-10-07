@@ -1,0 +1,20 @@
+<table>
+    <tr>
+        <th>Item</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Valor</th>
+        <th></th>
+        <th></th>
+    </tr>
+    
+        <tr *ngFor = "let producto of productos">
+            <td>{{producto.id_producto}}</td>
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.descripcion}}</td>
+            <td>{{producto.valor | currency}}</td>
+            <td><a [routerLink]="['../productos/editar',producto.id_producto]">Editar</a></td>  
+            <td><a [routerLink]="['../productos/eliminar',producto.id_producto]">Eliminar</a></td>   
+        </tr>
+      
+</table>

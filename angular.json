@@ -128,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "stock-client"
+  "defaultProject": "stock-client",
+  "cli": {
+    "analytics": false
+  }
 }

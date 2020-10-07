@@ -1,0 +1,28 @@
+<table>
+    <tr>
+        <th>Item</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Tipo</th>
+        <th>Serial</th>
+        <th>Fecha</th>
+        <th>Valor</th>
+        <th>Estado</th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    <tr *ngFor="let product of inventarios">
+        <td>{{product.id_inventario}}</td>
+        <td>{{product.nombre}}</td>
+        <td>{{product.descripcion}}</td>
+        <td>{{product.tipo}}</td>
+        <td>{{product.serial}}</td>
+        <td>{{product.fecha}}</td>
+        <td>{{product.valor | currency}}</td>
+        <td>{{product.estado}}</td>
+        <td><a [routerLink]="['../inventario/editar',product.id_inventario]">Editar</a></td>
+        <td><a [routerLink]="['../inventario/eliminar',product.id_inventario]">Eliminar</a></td>
+    </tr>
+
+</table>

@@ -1,0 +1,11 @@
+<h1>¿Estás seguro de eliminar este proveedor?</h1>
+<mat-divider></mat-divider>
+<app-product-detail [detalle_inventario] = "proveedor" [headers] = "headers"></app-product-detail>
+
+<mat-divider></mat-divider>
+<section>
+    <div class="example-button-row">
+        <button mat-raised-button (click) = "fetchDeletProduct(proveedor.id_proveedor)"  color="primary">Aceptar</button>
+        <a mat-raised-button routerLink="/proveedores" color="warn">Cancelar</a>
+    </div>
+</section>

@@ -1,0 +1,11 @@
+<h1>¿Estás seguro de eliminar este producto?</h1>
+<mat-divider></mat-divider>
+<app-product-detail [detalle_inventario] = "producto" [headers] = "headers"></app-product-detail>
+
+<mat-divider></mat-divider>
+<section>
+    <div class="example-button-row">
+        <button mat-raised-button (click) = "fetchDeletProduct(producto.id_producto)"  color="primary">Aceptar</button>
+        <a mat-raised-button routerLink="/productos" color="warn">Cancelar</a>
+    </div>
+</section>

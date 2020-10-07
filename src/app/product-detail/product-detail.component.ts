@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Product } from '../modelos/product.model';
+import { DetalleInventarioModel } from '../modelos/detalle_inventario.model';
 
 @Component({
   selector: 'app-product-detail',
@@ -7,7 +7,7 @@ import { Product } from '../modelos/product.model';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-  @Input() product: Product;
+  @Input() detalle_inventario: any;
   @Input() headers: string[];
   constructor() { }
 
